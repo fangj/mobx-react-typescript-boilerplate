@@ -1,40 +1,14 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import {observable} from 'mobx';
-import {observer} from 'mobx-react';
-import DevTools from 'mobx-react-devtools';
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 
-class AppState {
-    @observable timer = 0;
+import {hashHistory, Route, Router} from "react-router";
+import HomePage from "./routes/HomePage";
+import TodoList from "./routes/TodoList";
 
-    constructor() {
-        setInterval(() => {
-            this.timer += 1;
-        }, 1000);
-    }
-
-    resetTimer() {
-        this.timer = 0;
-    }
-}
-
-@observer
-class TimerView extends React.Component<{appState: AppState}, {}> {
-    render() {
-        return (
-            <div>
-                <button onClick={this.onReset}>
-                    Seconds passed: {this.props.appState.timer}
-                </button>
-                <DevTools />
-            </div>
-        );
-     }
-
-     onReset = () => {
-         this.props.appState.resetTimer();
-     }
-};
-
-const appState =  new AppState();
-ReactDOM.render(<TimerView appState={appState} />, document.getElementById('root'));
+ReactDOM.render((
+    <Router history={hashHistory}>
+        <Route path="/homepage" component={HomePage}/>
+        <Route path="/todolist" component={TodoList}/>
+        <Route path="*" component={TodoList}/>
+    </Router>
+), document.getElementById('root'));
