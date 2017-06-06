@@ -11,4 +11,8 @@ export default class Todo {
     constructor(title) {
         this.title = title;
     }
+
+    toggle() {
+        this.finished = !this.finished;
+    }
 }

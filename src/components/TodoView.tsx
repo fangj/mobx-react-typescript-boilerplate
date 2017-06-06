@@ -14,7 +14,7 @@ const TodoView = observer(({todo}: ITodoView) =>
         <input
             type="checkbox"
             checked={todo.finished}
-            onClick={() => todo.finished = !todo.finished}
+            onClick={e => todo.toggle()}
         />{todo.title}
     </li>
 );
