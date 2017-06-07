@@ -8,7 +8,12 @@
     "experimentalDecorators": true,
     "noLib": false,
     "jsx": "react",
-    "outDir": "dist"
+    "outDir": "dist",
+    "lib": [
+      "dom",
+      "es5",
+      "es2015.promise"
+    ]
   },
   "exclude": [
     "node_modules",

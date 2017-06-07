@@ -14,4 +14,10 @@ export default class TodoList {
     add(title: string) {
         this.todos.push(new Todo(title));
     }
+
+    addTitles(titles: string[]) {
+        titles.map(title => {
+            this.todos.push(new Todo(title));
+        })
+    }
 }
